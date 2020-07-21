@@ -16,8 +16,8 @@ bool vital_checkrespRate (float arg_respRate)
   return vital_check(arg_respRate,30,60);
 }
 
-bool vital_checkrespRate (float arg_spo2);
-bool vital_checkrespRate (float arg_spo2)
+bool vital_checkspo2 (float arg_spo2);
+bool vital_checkspo2 (float arg_spo2)
 {
   return vital_check(arg_spo2,80,100);
 }
