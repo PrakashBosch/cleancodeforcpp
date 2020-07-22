@@ -1,10 +1,10 @@
-typedef enum
+enum vital
 {
   bpm=0,
   resprate,
   spo2,
   n
-}
+};
 
 bool vital_check(float arg_param, int MIN, int MAX);
 bool vital_check(float arg_param, int MIN, int MAX)
@@ -32,8 +32,8 @@ bool vital_checkspo2 (float arg_spo2)
 
 bool (*vital_param[n])(float param);
 
-void vital_param_resgister(int ID, bool *addr);
-void vital_param_resgister(ID, bool *addr)
+void vital_param_resgister(int ID, bool addr);
+void vital_param_resgister(ID, bool addr)
 {
    vital_param[ID] = &addr;
 }
