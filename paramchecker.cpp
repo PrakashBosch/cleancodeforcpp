@@ -1,3 +1,11 @@
+typedef enum
+{
+  bpm=0,
+  resprate,
+  spo2,
+  n
+}
+
 bool vital_check(float arg_param, int MIN, int MAX);
 bool vital_check(float arg_param, int MIN, int MAX)
 {
@@ -21,9 +29,26 @@ bool vital_checkspo2 (float arg_spo2)
 {
   return vital_check(arg_spo2,80,100);
 }
-  
 
-bool vitalsAreOk(float bpm, float spo2, float respRate) {
+bool (*vital_param[n])(float param);
+
+void vital_param_resgister(int ID,vital_param *addr);
+void vital_param_resgister(ID, vital_param *addr)
+{
+   vital_param[ID] = &addr;
+}
+
+
+bool vitalsAreOk(float *vitals) {
   
-  return !(vital_checkbpm(bpm) || vital_checkspo2(spo2) || vital_checkrespRate(respRate));
+  bool ret_status = FALSE;
+  
+ vital_param_resgister(bpm,&vital_checkbpm);
+ vital_param_resgister(resprate,&vital_checkrespRate);
+ vital_param_resgister(spo2,&vital_checkspo2);
+  
+  for (int i =0; i<n;i++)
+    ret_status = ret_status || vital_param[i](vitals[i]);
+  
+  return !(ret_status);
 }
