@@ -32,8 +32,8 @@ bool vital_checkspo2 (float arg_spo2)
 
 bool (*vital_param[n])(float param);
 
-void vital_param_resgister(int ID,vital_param *addr);
-void vital_param_resgister(ID, vital_param *addr)
+void vital_param_resgister(int ID, bool *addr);
+void vital_param_resgister(ID, bool *addr)
 {
    vital_param[ID] = &addr;
 }
@@ -48,7 +48,7 @@ void registration(void)
 
 bool vitalsAreOk(float *vitals) {
   
-  bool ret_status = FALSE;
+  bool ret_status = 0;
   
   for (int i =0; i<n;i++)
     ret_status = ret_status || vital_param[i](vitals[i]);
