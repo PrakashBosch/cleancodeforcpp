@@ -38,14 +38,16 @@ void vital_param_resgister(ID, vital_param *addr)
    vital_param[ID] = &addr;
 }
 
+void registration(void)
+{
+   vital_param_resgister(bpm,&vital_checkbpm);
+ vital_param_resgister(resprate,&vital_checkrespRate);
+ vital_param_resgister(spo2,&vital_checkspo2);
+}
 
 bool vitalsAreOk(float *vitals) {
   
   bool ret_status = FALSE;
-  
- vital_param_resgister(bpm,&vital_checkbpm);
- vital_param_resgister(resprate,&vital_checkrespRate);
- vital_param_resgister(spo2,&vital_checkspo2);
   
   for (int i =0; i<n;i++)
     ret_status = ret_status || vital_param[i](vitals[i]);
