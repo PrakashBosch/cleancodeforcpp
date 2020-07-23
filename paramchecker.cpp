@@ -64,8 +64,3 @@ bool vitalsAreOk(Params vitals) {
   return !(ret_status);
 }
 
-int main()
-{
-	Params vitcheck;
-	vitalsAreOk(vitcheck);
-}
