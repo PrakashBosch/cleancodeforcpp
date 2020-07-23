@@ -53,6 +53,7 @@ void registration(void)
    vital_param_resgister(espo2,&Vital_IsSpo2InRange);
 }
 
+bool vitalsAreOk(Params vitals);
 bool vitalsAreOk(Params vitals) {
   
   bool ret_status = 0;
